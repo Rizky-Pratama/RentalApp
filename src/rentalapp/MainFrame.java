@@ -71,31 +71,38 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void checkLoggedInUser() {
         utils.UserSession session = utils.UserSession.getInstance();
-        // if (session.isLoggedIn()) {
-        // // Jika sidebar memiliki komponen untuk menampilkan info user, update di sini
-        // // Contoh: sidebarPanel1.setUserInfo(session.getNama(), session.getRole());
-        //
-        // // Atur akses menu berdasarkan role
-        // setupAccessByRole(session.getRole());
-        // } else {
-        // // Jika tidak ada user yang login, redirect ke form login
-        // redirectToLogin();
-        // }
+        if (session.isLoggedIn()) {
+            setupAccessByRole(session.getRole());
+        } else {
+            redirectToLogin();
+        }
     }
 
     /**
      * Mengatur akses menu berdasarkan role user
      */
     private void setupAccessByRole(String role) {
-        // Implementasi disesuaikan dengan UI yang ada
-        // Contoh: hanya admin yang bisa akses panel Karyawan
-        // Anda bisa menambahkan kode di sini untuk mengatur aksesibilitas komponen
+        // Setup role-based access control for sidebar
+        if (sidebarPanel1 != null) {
+            sidebarPanel1.setupRoleBasedAccess(role);
+        }
+
+        if ("staff".equalsIgnoreCase(role)) {
+            System.out.println("Access configured for Staff role");
+        } else if ("admin".equalsIgnoreCase(role)) {
+            System.out.println("Access configured for Admin role - full access granted");
+        } else {
+            System.out.println("Unknown role: " + role + " - defaulting to staff permissions");
+            if (sidebarPanel1 != null) {
+                sidebarPanel1.setupRoleBasedAccess("staff");
+            }
+        }
     }
 
     /**
      * Kembali ke form login
      */
-    private void redirectToLogin() {
+    public void redirectToLogin() {
         Login loginFrame = new Login();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
@@ -135,6 +142,12 @@ public class MainFrame extends javax.swing.JFrame {
     private void setupSidebar() {
         if (sidebarPanel1 != null) {
             sidebarPanel1.setMainFrame(this);
+
+            // Apply role-based access after sidebar is configured
+            utils.UserSession session = utils.UserSession.getInstance();
+            if (session.isLoggedIn()) {
+                sidebarPanel1.setupRoleBasedAccess(session.getRole());
+            }
         } else {
             System.err.println("Error: sidebarPanel is not initialized!");
         }
@@ -146,8 +159,47 @@ public class MainFrame extends javax.swing.JFrame {
      * @param panelType The panel to show
      */
     public void showPanel(PanelType panelType) {
+        // Check if user has access to the requested panel
+        if (!hasAccessToPanel(panelType)) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Anda tidak memiliki akses ke fitur ini.\nHubungi administrator untuk informasi lebih lanjut.",
+                    "Akses Ditolak",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         CardLayout cl = (CardLayout) contentPanel.getLayout();
         cl.show(contentPanel, panelType.getId());
+    }
+
+    /**
+     * Check if current user has access to the specified panel
+     * 
+     * @param panelType The panel to check access for
+     * @return true if user has access, false otherwise
+     */
+    private boolean hasAccessToPanel(PanelType panelType) {
+        utils.UserSession session = utils.UserSession.getInstance();
+
+        if (!session.isLoggedIn()) {
+            return false;
+        }
+
+        String role = session.getRole();
+
+        // Admin has access to all panels
+        if ("admin".equalsIgnoreCase(role)) {
+            return true;
+        }
+
+        // Staff has access to all panels except Karyawan
+        if ("staff".equalsIgnoreCase(role)) {
+            return panelType != PanelType.KARYAWAN;
+        }
+
+        // Unknown role - deny access to sensitive panels
+        return panelType == PanelType.DASHBOARD;
     }
 
     /**
@@ -175,6 +227,17 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     /**
+     * Refresh role-based access control
+     * This method can be called when user role changes or needs to be re-evaluated
+     */
+    public void refreshRoleBasedAccess() {
+        utils.UserSession session = utils.UserSession.getInstance();
+        if (session.isLoggedIn() && sidebarPanel1 != null) {
+            sidebarPanel1.setupRoleBasedAccess(session.getRole());
+        }
+    }
+
+    /**
      * Creates a new MainFrame and initializes all components This is the main
      * entry point for the application UI
      */
@@ -190,8 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -199,38 +261,39 @@ public class MainFrame extends javax.swing.JFrame {
         sidebarPanel1 = new rentalapp.SidebarPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RENTAL MOBIL");
 
         contentPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout sidebarpanelLayout = new javax.swing.GroupLayout(sidebarpanel);
         sidebarpanel.setLayout(sidebarpanelLayout);
         sidebarpanelLayout.setHorizontalGroup(
-            sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarpanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(sidebarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
+                sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarpanelLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(sidebarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)));
         sidebarpanelLayout.setVerticalGroup(
-            sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebarPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sidebarPanel1, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(sidebarpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(sidebarpanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 916,
+                                        Short.MAX_VALUE)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-            .addComponent(sidebarpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                        .addComponent(sidebarpanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

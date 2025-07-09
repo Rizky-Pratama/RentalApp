@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.util.List;
 import model.Sopir;
 
@@ -23,6 +22,7 @@ public class SopirController {
   public Sopir getSopirById(int idSopir) {
     return sopirModel.getSopirById(idSopir);
   }
+
   public boolean addSopir(String nama, String noSim, int tarifPerHari) {
     sopirModel.setNama(nama);
     sopirModel.setNoSim(noSim);
@@ -31,6 +31,7 @@ public class SopirController {
 
     return sopirModel.addSopir();
   }
+
   public boolean updateSopir(int idSopir, String nama, String noSim, int tarifPerHari, String status) {
     sopirModel.setIdSopir(idSopir);
     sopirModel.setNama(nama);
@@ -49,5 +50,10 @@ public class SopirController {
   public boolean updateStatus(int idSopir, String status) {
     sopirModel.setIdSopir(idSopir);
     return sopirModel.updateStatus(status);
+  }
+
+  public int getTotalSopir() {
+    List<Sopir> list = sopirModel.getAllSopir();
+    return list != null ? list.size() : 0;
   }
 }

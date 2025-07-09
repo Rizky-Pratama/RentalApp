@@ -50,4 +50,9 @@ public class KaryawanController {
     karyawanModel.setIdKaryawan(idKaryawan);
     return karyawanModel.deleteKaryawan();
   }
+
+  public int getTotalKaryawan() {
+    List<Karyawan> list = karyawanModel.getAllKaryawan();
+    return list != null ? list.size() : 0;
+  }
 }

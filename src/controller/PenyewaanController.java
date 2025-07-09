@@ -117,7 +117,7 @@ public class PenyewaanController {
     // Get mobil harga_sewa
     Mobil mobil = new Mobil().getMobilById(idMobil);
     if (mobil != null) {
-      int mobilCost = mobil.getHargaSewa()*durationDays;
+      int mobilCost = mobil.getHargaSewa() * durationDays;
       totalCost = totalCost + mobilCost;
     }
 
@@ -131,5 +131,10 @@ public class PenyewaanController {
     }
 
     return totalCost;
+  }
+
+  public int getTotalPenyewaan() {
+    List<Penyewaan> list = penyewaanModel.getAllPenyewaan();
+    return list != null ? list.size() : 0;
   }
 }

@@ -47,16 +47,18 @@ public class SidebarPanel extends javax.swing.JPanel {
         btnKaryawan = new javax.swing.JLabel();
         btnPenyewaan = new javax.swing.JLabel();
         bntPenyewaan = new javax.swing.JLabel();
+        bntlogout = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(200, 300));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Dashboard.png"))); // NOI18N
         btnDashboard.setText("Dashboard");
         btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDashboard.setIconTextGap(10);
         btnDashboard.setMaximumSize(new java.awt.Dimension(60, 16));
         btnDashboard.setMinimumSize(new java.awt.Dimension(60, 16));
         btnDashboard.setPreferredSize(new java.awt.Dimension(60, 16));
@@ -65,73 +67,123 @@ public class SidebarPanel extends javax.swing.JPanel {
                 btnDashboardMouseClicked(evt);
             }
         });
-        add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 50));
 
-        btnPelanggan.setForeground(new java.awt.Color(255, 255, 255));
         btnPelanggan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Customer.png"))); // NOI18N
         btnPelanggan.setText("Data Pelanggan");
         btnPelanggan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPelanggan.setIconTextGap(10);
         btnPelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPelangganMouseClicked(evt);
             }
         });
-        add(btnPelanggan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 50));
 
-        btnMobil.setForeground(new java.awt.Color(255, 255, 255));
         btnMobil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMobil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Mobil.png"))); // NOI18N
         btnMobil.setText("Data Mobil");
         btnMobil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMobil.setIconTextGap(10);
         btnMobil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMobilMouseClicked(evt);
             }
         });
-        add(btnMobil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 50));
 
-        btnSopir.setForeground(new java.awt.Color(255, 255, 255));
         btnSopir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSopir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Supir.png"))); // NOI18N
         btnSopir.setText("Data Sopir");
         btnSopir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSopir.setIconTextGap(10);
         btnSopir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSopirMouseClicked(evt);
             }
         });
-        add(btnSopir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
 
-        btnKaryawan.setForeground(new java.awt.Color(255, 255, 255));
         btnKaryawan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnKaryawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Karyawan.png"))); // NOI18N
         btnKaryawan.setText("Data Karyawan");
         btnKaryawan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKaryawan.setIconTextGap(10);
         btnKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnKaryawanMouseClicked(evt);
             }
         });
-        add(btnKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 50));
 
-        btnPenyewaan.setForeground(new java.awt.Color(255, 255, 255));
         btnPenyewaan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPenyewaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Data sewa.png"))); // NOI18N
         btnPenyewaan.setText("Data Penyewaan");
         btnPenyewaan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPenyewaan.setIconTextGap(10);
         btnPenyewaan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPenyewaanMouseClicked(evt);
             }
         });
-        add(btnPenyewaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 50));
 
-        bntPenyewaan.setForeground(new java.awt.Color(255, 255, 255));
         bntPenyewaan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bntPenyewaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pengembalian.png"))); // NOI18N
         bntPenyewaan.setText("Data Pengembalian");
         bntPenyewaan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bntPenyewaan.setIconTextGap(10);
         bntPenyewaan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bntPenyewaanMouseClicked(evt);
             }
         });
-        add(bntPenyewaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 50));
+
+        bntlogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bntlogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logout.png"))); // NOI18N
+        bntlogout.setText("Logout");
+        bntlogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bntlogout.setIconTextGap(10);
+        bntlogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bntlogoutMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMobil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPelanggan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSopir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKaryawan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPenyewaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bntPenyewaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(bntlogout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jSeparator1))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnMobil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnSopir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnPenyewaan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(bntPenyewaan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bntlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSopirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSopirMouseClicked
@@ -149,6 +201,16 @@ public class SidebarPanel extends javax.swing.JPanel {
     private void bntPenyewaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntPenyewaanMouseClicked
         navigateToPanel(MainFrame.PanelType.PENGEMBALIAN, "Data Pengembalian");
     }//GEN-LAST:event_bntPenyewaanMouseClicked
+
+    private void bntlogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntlogoutMouseClicked
+        // Clear user session and redirect to login
+        utils.UserSession.getInstance().clearSession();
+        if (mainFrame != null) {
+            mainFrame.redirectToLogin();
+        } else {
+            System.err.println("MainFrame reference is null, cannot redirect to login!");
+        }
+    }//GEN-LAST:event_bntlogoutMouseClicked
 
     private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnDashboardMouseClicked
         navigateToPanel(MainFrame.PanelType.DASHBOARD, "Dashboard");
@@ -177,13 +239,40 @@ public class SidebarPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Set visibility of the Karyawan button based on user role
+     *
+     * @param visible true to show the button, false to hide it
+     */
+    public void setKaryawanButtonVisible(boolean visible) {
+        if (btnKaryawan != null) {
+            btnKaryawan.setVisible(visible);
+        }
+    }
+
+    /**
+     * Set access control based on user role
+     *
+     * @param role the user's role ("admin" or "staff")
+     */
+    public void setupRoleBasedAccess(String role) {
+        if ("admin".equalsIgnoreCase(role)) {
+            // Admin can access all features including Karyawan management
+            setKaryawanButtonVisible(true);
+        } else {
+            // Staff cannot access Karyawan management
+            setKaryawanButtonVisible(false);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bntPenyewaan;
+    private javax.swing.JLabel bntlogout;
     private javax.swing.JLabel btnDashboard;
     private javax.swing.JLabel btnKaryawan;
     private javax.swing.JLabel btnMobil;
     private javax.swing.JLabel btnPelanggan;
     private javax.swing.JLabel btnPenyewaan;
     private javax.swing.JLabel btnSopir;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
