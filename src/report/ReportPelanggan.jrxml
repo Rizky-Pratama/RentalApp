@@ -27,12 +27,16 @@
 	<title>
 		<band height="67" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="18" width="555" height="36" uuid="41485e60-7859-4e56-b2c9-56c7de479b76"/>
+				<reportElement x="191" y="0" width="176" height="67" uuid="41485e60-7859-4e56-b2c9-56c7de479b76"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Laporan Pelanggan]]></text>
 			</staticText>
+			<image>
+				<reportElement x="13" y="12" width="102" height="45" uuid="5c5c98b6-bacb-4638-83d4-50df80abe653"/>
+				<imageExpression><![CDATA["D:\\Kuliah\\PBO\\RentalApp\\src\\icon\\Logo black.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -43,7 +47,7 @@
 				<text><![CDATA[Laporan dibuat pada:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="279" y="0" width="100" height="26" uuid="f7bf4464-e3c0-4169-8c55-780d003a8d35"/>
+				<reportElement x="279" y="0" width="139" height="26" uuid="f7bf4464-e3c0-4169-8c55-780d003a8d35"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
